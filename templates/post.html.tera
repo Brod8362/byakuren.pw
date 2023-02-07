@@ -1,0 +1,7 @@
+{% extends "base" %}
+
+{% block content %}
+<div>
+{{rendered_page | safe}}
+</div>
+{% endblock content %}

@@ -1,0 +1,9 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <main>
+        {% block content%}{% endblock content %}
+    </main>
+</body>
