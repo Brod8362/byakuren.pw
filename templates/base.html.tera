@@ -15,8 +15,12 @@
 ║
 ╠ <a href="/">Home</a>
 ║
-╠ Posts{% for post in posts %}
-║ ╙ <a href="/page/{{post.0}}" class="tree">{{ post.0 | replace(from="_", to=" ")}}</a> <small>({{ post.1 | date}})</small>{% endfor %}
+{% set_global i = posts | length -%}
+╠ Posts
+{% for post in posts -%}
+{% set_global i = i-1 -%}
+║ {% if i == 0 %}╚{% else %}╠{%endif%}<a href="/page/{{post.0}}" class="tree">{{ post.0 | replace(from="_", to=" ")}}</a> <small class="date">({{ post.1 | date}})</small>
+{% endfor -%}
 ║
 ╠ <a href="https://github.com/Brod8362/byakuren.pw">Source Code</a>
 ╚ <a href="/about">About</a>

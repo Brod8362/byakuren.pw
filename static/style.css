@@ -80,6 +80,13 @@ main {
 .error-code {
     text-align: center;
     font-size: 20px;
-    line-height: 20px;
-    letter-spacing: 0px;
+    /* this 1-pixel disparity is intentional */
+    line-height: 19px;
+    letter-spacing: 0;
+}
+
+.date {
+    vertical-align: center;
+    font-size: 13px;
+    line-height: 13px;
 }
