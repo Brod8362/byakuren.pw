@@ -47,7 +47,6 @@ fn about_page() -> Template {
 #[launch]
 pub async fn rocket() -> Rocket<Build> {
     let pages = util::all_pages();
-    println!("{:?}", pages);
     rocket::build()
         .mount("/", routes![render_doc, about_page])
         .mount("/static", FileServer::from("static"))

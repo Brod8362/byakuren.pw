@@ -1,11 +1,14 @@
 use std::fs;
+use std::os::unix::fs::MetadataExt;
+use rocket_dyn_templates::serde::Serialize;
 
-pub fn all_pages() -> Vec<String> {
+pub fn all_pages() -> Vec<(String, i64)> {
     match fs::read_dir("pages") {
         Ok(paths) => {
             paths.into_iter()
                 .filter_map(|f| {
-                    let mut t = String::from(f.unwrap()
+                    let dir = f.unwrap();
+                    let mut t = String::from(dir
                         .path()
                         .file_name()
                         .unwrap()
@@ -16,7 +19,8 @@ pub fn all_pages() -> Vec<String> {
                         t.pop();
                         t.pop();
                         t.pop();
-                        Some(t)
+                        let metadata = fs::metadata(dir.path()).unwrap();
+                        Some((t, metadata.ctime()))
                     } else {
                         None
                     }

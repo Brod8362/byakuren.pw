@@ -16,7 +16,7 @@
 ╠ <a href="/">Home</a>
 ║
 ╠ Posts{% for post in posts %}
-║ ╙ <a href="/page/{{post}}" class="tree">{{ post | replace(from="_", to=" ")}}</a>{% endfor %}
+║ ╙ <a href="/page/{{post.0}}" class="tree">{{ post.0 | replace(from="_", to=" ")}}</a> <small>({{ post.1 | date}})</small>{% endfor %}
 ║
 ╠ <a href="https://github.com/Brod8362">Source Code</a>
 ╚ <a href="/about">About</a>
