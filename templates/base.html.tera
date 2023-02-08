@@ -12,6 +12,8 @@
   Site Map
 ╠══════════╝
 ║
+╠ <a href="/">Home</a>
+║
 ╠ Posts{% for post in posts %}
 ║ ╙ <a href="/page/{{post}}" class="tree">{{ post | replace(from="_", to=" ")}}</a>{% endfor %}
 ║
@@ -22,4 +24,7 @@
     <main>
         {% block content%}{% endblock content %}
     </main>
+    <div class="footer retro-border">
+        <p>footer content</p>
+    </div>
 </body>

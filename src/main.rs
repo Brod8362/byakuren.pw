@@ -27,12 +27,19 @@ fn render_doc(doc_name: String) -> Result<Template, Status> {
     )
 }
 
+#[get("/about")]
+fn about_page() -> Template {
+    Template::render("about", context!{
+        posts: util::all_pages()
+    })
+}
+
 #[launch]
 pub async fn rocket() -> Rocket<Build> {
     let pages = util::all_pages();
     println!("{:?}", pages);
     rocket::build()
-        .mount("/", routes![render_doc])
+        .mount("/", routes![render_doc, about_page])
         .mount("/static", FileServer::from("static"))
         .attach(Template::fairing())
 }

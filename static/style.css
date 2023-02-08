@@ -3,7 +3,7 @@
     --header-height: 80px;
     --theme-color: #FFBF00;
     --tree-font-size: 20px;
-    --total-margin: 2em;
+    --total-margin: 8em;
 }
 
 .retro-border {
@@ -45,13 +45,15 @@ main {
 }
 
 .sidebar {
-    height: 100vh;
+    height: 103%;
     width: var(--sidebar-width);
     position: absolute;
     z-index: 1;
     top: var(--header-height);
     left: var(--total-margin);
     margin-top: 15px;
+    margin-bottom: -15px;
+    border-bottom: none;
 }
 
 .header {
@@ -60,4 +62,14 @@ main {
     left: var(--total-margin);
     width: 100%;
     margin-left: 0;
+}
+
+.footer {
+    height: var(--header-height);
+    padding: 0 0;
+    margin-right: -6px;
+}
+
+.post-content {
+    text-align: center;
 }
