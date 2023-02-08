@@ -11,6 +11,10 @@ static DIGITS: [[&'static str;5]; 10] = [
     ["▉▉▉▉", "▉  ▉", " ▉▉▉", "   ▉", "   ▉"], //9
 ];
 
+static FADE_CHARACTERS: [&str; 5] = [
+    "▉", "▓", "▒", "░", "░"
+];
+
 pub fn num_as_ascii(value: i32) -> String {
     let mut result: String = String::new();
     for i in 0..5 {
@@ -23,7 +27,10 @@ pub fn num_as_ascii(value: i32) -> String {
         }
         while !digit_stack.is_empty() {
             let digit = digit_stack.pop().unwrap();
-            row_buf.push_str(DIGITS[digit as usize][i]);
+            row_buf.push_str(
+                &*DIGITS[digit as usize][i]
+                    .replace("▉", FADE_CHARACTERS[i])
+                );
             row_buf.push(' ');
         }
         result.push_str(&*row_buf);

@@ -4,6 +4,7 @@
 <div class="error-page">
     <pre class="error-code">
 {{ code }}
+blunder
     </pre>
 
 </div>
