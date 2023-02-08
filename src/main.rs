@@ -1,4 +1,5 @@
 extern crate rocket;
+mod util;
 
 use std::fs;
 use comrak::{Arena, ComrakOptions, format_html, parse_document};
@@ -20,13 +21,16 @@ fn render_doc(doc_name: String) -> Result<Template, Status> {
 
     Ok(
         Template::render("post", context! {
-            rendered_page: String::from_utf8(html).unwrap()
+            rendered_page: String::from_utf8(html).unwrap(),
+            posts: util::all_pages()
         })
     )
 }
 
 #[launch]
 pub async fn rocket() -> Rocket<Build> {
+    let pages = util::all_pages();
+    println!("{:?}", pages);
     rocket::build()
         .mount("/", routes![render_doc])
         .mount("/static", FileServer::from("static"))
