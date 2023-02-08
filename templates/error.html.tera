@@ -2,6 +2,9 @@
 
 {% block content %}
 <div class="error-page">
-    {{ code }}
+    <pre class="error-code">
+{{ code }}
+    </pre>
+
 </div>
 {% endblock %}

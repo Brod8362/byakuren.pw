@@ -57,8 +57,8 @@ fn home_page() -> Template {
 fn default_catcher(status: Status, _request: &Request) -> Template {
     Template::render("error", context!{
         posts: util::all_pages(),
-        code: status.code,
-        title: status.code
+        code: ascii::num_as_ascii(status.code as i32),
+        title: status.code,
     })
 }
 

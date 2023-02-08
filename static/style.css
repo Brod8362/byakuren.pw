@@ -76,3 +76,10 @@ main {
 .post-content {
     text-align: center;
 }
+
+.error-code {
+    text-align: center;
+    font-size: 20px;
+    line-height: 20px;
+    letter-spacing: 0px;
+}
