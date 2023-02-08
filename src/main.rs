@@ -1,9 +1,10 @@
 extern crate rocket;
 mod util;
+mod ascii;
 
 use std::fs;
 use comrak::{Arena, ComrakOptions, format_html, parse_document};
-use rocket::{Build, get, Rocket, routes, launch};
+use rocket::{Build, get, Rocket, routes, launch, catchers, Request, catch};
 use rocket::fs::FileServer;
 use rocket::http::Status;
 use std::os::unix::fs::MetadataExt;
@@ -52,10 +53,20 @@ fn home_page() -> Template {
     })
 }
 
+#[catch(default)]
+fn default_catcher(status: Status, _request: &Request) -> Template {
+    Template::render("error", context!{
+        posts: util::all_pages(),
+        code: status.code,
+        title: status.code
+    })
+}
+
 #[launch]
 pub async fn rocket() -> Rocket<Build> {
     rocket::build()
         .mount("/", routes![render_doc, about_page, home_page])
         .mount("/static", FileServer::from("static"))
+        .register("/", catchers![default_catcher])
         .attach(Template::fairing())
 }
