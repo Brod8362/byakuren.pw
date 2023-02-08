@@ -31,6 +31,6 @@
         {% block content%}{% endblock content %}
     </main>
     <div class="footer retro-border">
-        <p>footer content</p>
+        <p>© 2023 Brod8362</p>
     </div>
 </body>

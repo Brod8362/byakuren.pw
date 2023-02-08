@@ -18,4 +18,11 @@ some content
 
 **bold content**
 
+```
+big code block
+with multiple lines
+```
+
+this is `inline` code block
+
 

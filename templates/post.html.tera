@@ -3,7 +3,7 @@
 {% block content %}
 <div class="post-content">
     <div class="retro-border" style="width: 160px">
-        Written: {{ created | date }}
+        Last Updated: {{ created | date }}
     </div>
     {{rendered_page | safe}}
 </div>
