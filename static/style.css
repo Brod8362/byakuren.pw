@@ -45,7 +45,7 @@ main {
 }
 
 .sidebar {
-    height: 110%;
+    height: 103%;
     width: var(--sidebar-width);
     position: absolute;
     z-index: 1;
@@ -69,11 +69,8 @@ main {
     width: 100%;
     padding: 0 0;
     margin-right: -6px;
-    background-color: black;
-    fill: black;
-    fill-opacity: 100%;
+    background: black;
     z-index: 2;
-
 }
 
 .post-content {

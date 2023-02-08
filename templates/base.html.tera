@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <head>
     <link rel="stylesheet" href="/static/style.css">
-    <title>{{title}}</title>
+    <title>{{title | title}}</title>
 </head>
 <body>
     <div class="header retro-border">
@@ -20,6 +20,7 @@
 ║
 ╠ <a href="https://github.com/Brod8362">Source Code</a>
 ╚ <a href="/about">About</a>
+
 </pre>
     </div>
     <main>
