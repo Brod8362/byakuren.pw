@@ -3,10 +3,21 @@
     <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
-    <div class="sidebar">
-        {% for post in posts %}
-        <a href="/pages/{{post}}">{{ post | replace(from="_", to=" ")}}</a>
-        {% endfor %}
+    <div class="header retro-border">
+        <h1 class="site-title">byakuren.pw</h1>
+    </div>
+    <div class="sidebar retro-border">
+<pre class="tree">
+
+  Site Map
+╠══════════╝
+║
+╠ Posts{% for post in posts %}
+║ ╙ <a href="/page/{{post}}" class="tree">{{ post | replace(from="_", to=" ")}}</a>{% endfor %}
+║
+╠ <a href="https://github.com/Brod8362">Source Code</a>
+╚ <a href="/about">About</a>
+</pre>
     </div>
     <main>
         {% block content%}{% endblock content %}

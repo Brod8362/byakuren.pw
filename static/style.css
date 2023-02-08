@@ -1,3 +1,63 @@
-p {
-    color: darkorange;
+:root {
+    --sidebar-width: 225px;
+    --header-height: 80px;
+    --theme-color: #FFBF00;
+    --tree-font-size: 20px;
+    --total-margin: 2em;
+}
+
+.retro-border {
+    border-style: double;
+    border-color: var(--theme-color)
+}
+
+.site-title {
+    margin-left: 20px;
+}
+
+body {
+    background-color: black;
+    margin-left: var(--total-margin);
+    margin-right: var(--total-margin);
+}
+
+* {
+    color: var(--theme-color);
+    font-family: FreeMono, monospace;
+}
+
+main {
+    margin-left: var(--sidebar-width);
+    height: 100vh;
+    top: var(--header-height);
+    padding: 15px 30px;
+    align-content: center;
+    border-right: double;
+    margin-right: -6px;
+}
+
+.tree {
+    font-size: var(--tree-font-size);
+    font-family: FreeMono, monospace;
+    margin: 0;
+    padding-top: 0;
+    line-height: var(--tree-font-size);
+}
+
+.sidebar {
+    height: 100vh;
+    width: var(--sidebar-width);
+    position: absolute;
+    z-index: 1;
+    top: var(--header-height);
+    left: var(--total-margin);
+    margin-top: 15px;
+}
+
+.header {
+    height: var(--header-height);
+    top: 0;
+    left: var(--total-margin);
+    width: 100%;
+    margin-left: 0;
 }
