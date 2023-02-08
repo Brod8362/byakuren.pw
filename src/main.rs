@@ -22,7 +22,8 @@ fn render_doc(doc_name: String) -> Result<Template, Status> {
     Ok(
         Template::render("post", context! {
             rendered_page: String::from_utf8(html).unwrap(),
-            posts: util::all_pages()
+            posts: util::all_pages(),
+            title: doc_name.replace("_", " ")
         })
     )
 }
@@ -30,7 +31,8 @@ fn render_doc(doc_name: String) -> Result<Template, Status> {
 #[get("/about")]
 fn about_page() -> Template {
     Template::render("about", context!{
-        posts: util::all_pages()
+        posts: util::all_pages(),
+        title: "About"
     })
 }
 
