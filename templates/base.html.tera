@@ -3,7 +3,7 @@
     <link rel="stylesheet" href="/static/style.css">
     <title>{{title}}</title>
 </head>
-<body>
+<body class="crt">
     <div class="header retro-border">
         <h1 class="site-title">byakuren.pw</h1>
     </div>
