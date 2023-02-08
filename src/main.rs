@@ -44,11 +44,18 @@ fn about_page() -> Template {
     })
 }
 
+#[get("/")]
+fn home_page() -> Template {
+    Template::render("home", context!{
+        posts: util::all_pages(),
+        title: "byakuren.pw"
+    })
+}
+
 #[launch]
 pub async fn rocket() -> Rocket<Build> {
-    let pages = util::all_pages();
     rocket::build()
-        .mount("/", routes![render_doc, about_page])
+        .mount("/", routes![render_doc, about_page, home_page])
         .mount("/static", FileServer::from("static"))
         .attach(Template::fairing())
 }

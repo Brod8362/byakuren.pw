@@ -1,0 +1,7 @@
+{% extends "base" %}
+
+{% block content %}
+<div class="about-page">
+    home page WIP
+</div>
+{% endblock %}

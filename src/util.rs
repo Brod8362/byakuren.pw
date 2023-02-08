@@ -1,6 +1,5 @@
 use std::fs;
 use std::os::unix::fs::MetadataExt;
-use rocket_dyn_templates::serde::Serialize;
 
 pub fn all_pages() -> Vec<(String, i64)> {
     match fs::read_dir("pages") {

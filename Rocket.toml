@@ -1,4 +1,4 @@
-[development]
+[debug]
 address = "localhost"
 port = 8000
 workers = 5
