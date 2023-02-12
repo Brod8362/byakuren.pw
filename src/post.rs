@@ -1,12 +1,14 @@
 use std::{fs::{File, self}, io::BufReader, io::{BufRead, Lines}};
 
 use comrak::{ComrakOptions, Arena, parse_document, format_html};
-use rocket::http::Status;
+use rocket::{http::Status};
 
+#[derive(Serialize)]
 pub struct PostInfo {
     pub title: String,
     pub timestamp: i64,
-    pub html: String
+    pub html: String,
+    pub id: String
 }
 
 fn parse_from_reader(lines: &mut Lines<BufReader<File>>) -> (String, i64) {
@@ -16,7 +18,8 @@ fn parse_from_reader(lines: &mut Lines<BufReader<File>>) -> (String, i64) {
 }
 
 pub fn parse_min(filename: &String) -> Result<PostInfo, Status> {
-    let fd = match File::open(filename) {
+    let path = format!("pages/{}.md", filename);
+    let fd = match File::open(path) {
         Ok(p) => p,
         Err(_) => return Err(Status::NotFound)
     };
@@ -28,7 +31,8 @@ pub fn parse_min(filename: &String) -> Result<PostInfo, Status> {
     Ok(PostInfo {
         title: res.0,
         timestamp: res.1,
-        html: String::new()
+        html: String::new(),
+        id: filename.clone()
     })
 }
 
@@ -59,17 +63,18 @@ pub fn parse_full(filename: &String) -> Result<PostInfo, Status> {
     Ok(PostInfo {
         title: title,
         timestamp: timestamp,
-        html: String::from_utf8(html).unwrap()
+        html: String::from_utf8(html).unwrap(),
+        id: filename.clone()
     })
 }
 
-pub fn all_min() -> Vec<(String, i64)> {
+pub fn all_min() -> Vec<PostInfo> {
     match fs::read_dir("pages") {
         Ok(paths) => {
-            let mut posts: Vec<(String, i64)> = paths.into_iter()
+            let mut posts: Vec<PostInfo> = paths.into_iter()
                 .filter_map(|f| {
                     let dir = f.unwrap();
-                    let t = String::from(dir
+                    let mut t = String::from(dir
                         .path()
                         .file_name()
                         .unwrap()
@@ -77,9 +82,11 @@ pub fn all_min() -> Vec<(String, i64)> {
                         .unwrap());
 
                     if t.ends_with(".md") {
-                        let f = format!("pages/{}", t);
-                        match parse_min(&f) {
-                            Ok(r) => Some((r.title, r.timestamp)),
+                        t.pop();
+                        t.pop();
+                        t.pop();
+                        match parse_min(&t) {
+                            Ok(r) => Some(r),
                             Err(_) => None
                         }
                     } else {
@@ -87,7 +94,7 @@ pub fn all_min() -> Vec<(String, i64)> {
                     }
                 })
                 .collect();
-                posts.sort_by(|a, b| b.1.partial_cmp(&a.1).unwrap());
+                posts.sort_by(|a, b| b.timestamp.partial_cmp(&b.timestamp).unwrap());
                 posts
         }
         Err(_) => panic!("can't determine page list")
