@@ -29,12 +29,14 @@ body {
 
 main {
     margin-left: var(--sidebar-width);
-    height: 100vh;
     top: var(--header-height);
     padding: 15px 30px;
     align-content: center;
     border-right: double;
     margin-right: -6px;
+    grid-row: 2;
+    grid-column-start: 1;
+    grid-column-end: 3;
 }
 
 .tree {
@@ -46,15 +48,13 @@ main {
 }
 
 .sidebar {
-    height: 103%;
     width: var(--sidebar-width);
-    position: absolute;
     z-index: 1;
     top: var(--header-height);
     left: var(--total-margin);
-    margin-top: 15px;
-    margin-bottom: -15px;
     border-bottom: none;
+    grid-row: 2;
+    grid-column: 1;
 }
 
 .header {
@@ -64,6 +64,9 @@ main {
     width: 100%;
     margin-left: 0;
     display:flex;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row: 1;
 }
 
 .footer {
@@ -73,6 +76,10 @@ main {
     margin-right: -6px;
     background: black;
     z-index: 2;
+    grid-column: span;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row: 3;
 }
 
 .error-code {
@@ -115,4 +122,8 @@ code {
 
 .home-segment {
     flex: 1;
+}
+
+.grid-container {
+    display:grid;
 }

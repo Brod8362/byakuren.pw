@@ -4,12 +4,13 @@
     <title>{{title}}</title>
 </head>
 <body class="crt">
-    <div class="header retro-border">
-        <h1 class="site-title">byakuren.pw</h1>
-        <!-- <marquee>have you had your cereal today?</marquee> -->
-    </div>
-    <div class="sidebar retro-border">
-<pre class="tree">
+    <div class="grid-container">
+        <div class="header retro-border">
+            <h1 class="site-title">byakuren.pw</h1>
+            <!-- <marquee>have you had your cereal today?</marquee> -->
+        </div>
+        <div class="sidebar retro-border">
+    <pre class="tree">
 
   Site Map
 ╠══════════╝
@@ -26,12 +27,13 @@
 ╠ <a href="https://github.com/Brod8362/byakuren.pw">Source Code</a>
 ╚ <a href="/about">About</a>
 
-</pre>
-    </div>
-    <main>
-        {% block content%}{% endblock content %}
-    </main>
-    <div class="footer retro-border">
-        <p>© 2023 Brod8362</p>
+    </pre>
+        </div>
+        <main>
+            {% block content%}{% endblock content %}
+        </main>
+        <div class="footer retro-border">
+            <p>© 2023 Brod8362</p>
+        </div>
     </div>
 </body>
