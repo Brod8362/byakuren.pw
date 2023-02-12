@@ -2,6 +2,7 @@ use std::{fs::{File, self}, io::BufReader, io::{BufRead, Lines}};
 
 use comrak::{ComrakOptions, Arena, parse_document, format_html};
 use rocket::{http::Status};
+use serde::Serialize;
 
 #[derive(Serialize)]
 pub struct PostInfo {
@@ -94,7 +95,7 @@ pub fn all_min() -> Vec<PostInfo> {
                     }
                 })
                 .collect();
-                posts.sort_by(|a, b| b.timestamp.partial_cmp(&b.timestamp).unwrap());
+                posts.sort_by(|a, b| a.timestamp.partial_cmp(&b.timestamp).unwrap());
                 posts
         }
         Err(_) => panic!("can't determine page list")

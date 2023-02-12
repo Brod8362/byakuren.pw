@@ -10,7 +10,7 @@
     <div class="home-section retro-border" style="display:flex;">
         <div class="home-segment retro-border">
             <h2 style="text-align:center;">Latest Post</h2>
-            <h3><a href="/page/{{posts[0].0}}">{{posts[0].0}}</a></h3> (posted on {{posts[0].1 | date}})
+            <h3><a href="/page/{{posts[0].id}}">{{posts[0].title}}</a></h3> (posted on {{posts[0].timestamp | date}})
         </div>
         <div class="home-segment retro-border" >
             <h2 class="text-align:center;">Site Philosophy</h2>

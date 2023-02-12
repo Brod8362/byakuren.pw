@@ -20,7 +20,7 @@
 ╠ Posts
 {% for post in posts -%}
 {% set_global i = i-1 -%}
-║ {% if i == 0 %}╚{% else %}╠{%endif%}<a href="/page/{{post.0}}" class="tree">{{ post.0 | replace(from="_", to=" ")}}</a> <small class="date">({{ post.1 | date}})</small>
+║ {% if i == 0 %}╚{% else %}╠{%endif%}<a href="/page/{{post.id}}" class="tree">{{ post.title }}</a> <small class="date">({{ post.timestamp | date}})</small>
 {% endfor -%}
 ║
 ╠ <a href="https://github.com/Brod8362/byakuren.pw">Source Code</a>

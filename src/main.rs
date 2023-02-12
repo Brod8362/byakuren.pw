@@ -13,11 +13,9 @@ fn render_doc(doc_name: String) -> Result<Template, Status> {
    
     Ok(
         Template::render("post", context! {
-            rendered_page: post.html,
+            title: &post.title,
+            post: &post,
             posts: post::all_min(),
-            title: post.title,
-            created: post.timestamp,
-            edited: post.timestamp,
         })
     )
 }
