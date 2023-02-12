@@ -95,7 +95,7 @@ pub fn all_min() -> Vec<PostInfo> {
                     }
                 })
                 .collect();
-                posts.sort_by(|a, b| a.timestamp.partial_cmp(&b.timestamp).unwrap());
+                posts.sort_by(|a, b| b.timestamp.partial_cmp(&a.timestamp).unwrap());
                 posts
         }
         Err(_) => panic!("can't determine page list")

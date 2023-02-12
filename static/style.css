@@ -1,5 +1,5 @@
 :root {
-    --sidebar-width: 280px;
+    --sidebar-width: 350px;
     --header-height: 80px;
     --theme-color: #FFBF00;
     --tree-font-size: 20px;
@@ -73,10 +73,6 @@ main {
     margin-right: -6px;
     background: black;
     z-index: 2;
-}
-
-.post-content {
-
 }
 
 .error-code {
