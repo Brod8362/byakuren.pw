@@ -63,6 +63,7 @@ main {
     left: var(--total-margin);
     width: 100%;
     margin-left: 0;
+    display:flex;
 }
 
 .footer {
@@ -112,3 +113,10 @@ code {
     height: auto;
 }
 
+.home-section {
+    height: 100%;
+}
+
+.home-segment {
+    flex: 1;
+}

@@ -1,7 +1,34 @@
 {% extends "base" %}
 
 {% block content %}
-<div class="about-page">
-    home page WIP
+<div class="home-page">
+    <!-- top section -->
+    <div class="home-section retro-border">
+        <h2 style="text-align:center;">Welcome to byakuren.pw</h2>
+    </div>
+    <!-- loewr section-->
+    <div class="home-section retro-border" style="display:flex;">
+        <div class="home-segment retro-border">
+            <h2 style="text-align:center;">Latest Post</h2>
+            <h3><a href="/page/{{posts[0].0}}">{{posts[0].0}}</a></h3> (posted on {{posts[0].1 | date}})
+        </div>
+        <div class="home-segment retro-border" >
+            <h2 class="text-align:center;">Site Philosophy</h2>
+            <p style="margin: 10px 10px;">
+                The old internet is a relic of the past. Today, blogging sites like Medium have taken over, removing one's personal touch on the world wide web.
+                The art of designing a page by hand is dying by the day, with frontend frameworks removing any sense of character the internet once had.
+                <br><br>
+                My aim to back a bit of the charm that we no longer have. Inspired by many sites I've seen browsing Hacker News, I decided to finally spin up a blog of my own,
+                with two simple goals:
+
+                <ol>
+                    <li>Not a <em>single</em> line of javascript.</li>
+                    <li>Unique styling that suits my tastes.</li>
+                </ol>
+
+                I don't know why, but I've always found the amber glow of some early CRTs so appealing - there's just something about the color that I find so very satisfying to look at.
+            </p>
+        </div>
+    </div>
 </div>
 {% endblock %}

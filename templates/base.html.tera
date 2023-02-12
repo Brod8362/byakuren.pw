@@ -6,6 +6,7 @@
 <body class="crt">
     <div class="header retro-border">
         <h1 class="site-title">byakuren.pw</h1>
+        <!-- <marquee>have you had your cereal today?</marquee> -->
     </div>
     <div class="sidebar retro-border">
 <pre class="tree">
