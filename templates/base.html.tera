@@ -25,6 +25,7 @@
 {% endfor -%}
 ║
 ╠ <a href="https://github.com/Brod8362/byakuren.pw">Source Code</a>
+╠ <a href="/rss">RSS Feed</a>
 ╚ <a href="/about">About</a>
 
     </pre>

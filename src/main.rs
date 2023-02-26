@@ -1,11 +1,13 @@
 extern crate rocket;
 mod ascii;
 mod post;
+mod rss;
 
 use rocket::{Build, get, Rocket, routes, launch, catchers, Request, catch};
 use rocket::fs::FileServer;
 use rocket::http::Status;
 use rocket_dyn_templates::{context, Template};
+use rocket::response::content::RawXml;
 
 #[get("/page/<doc_name>")]
 fn render_doc(doc_name: String) -> Result<Template, Status> {
@@ -36,6 +38,13 @@ fn home_page() -> Template {
     })
 }
 
+#[get("/rss")]
+fn rss_feed() -> RawXml<String> {
+    let posts = post::all_min();
+    let rss = rss::generate_rss(&posts, "https://hijiri.byakuren.pw");
+    RawXml(rss)
+}
+
 #[catch(default)]
 fn default_catcher(status: Status, _request: &Request) -> Template {
     Template::render("error", context!{
@@ -48,7 +57,7 @@ fn default_catcher(status: Status, _request: &Request) -> Template {
 #[launch]
 pub async fn rocket() -> Rocket<Build> {
     rocket::build()
-        .mount("/", routes![render_doc, about_page, home_page])
+        .mount("/", routes![render_doc, about_page, home_page, rss_feed])
         .mount("/static", FileServer::from("static"))
         .register("/", catchers![default_catcher])
         .attach(Template::fairing())
