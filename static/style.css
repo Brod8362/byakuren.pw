@@ -46,7 +46,7 @@ main {
 
 .tree {
     font-size: var(--tree-font-size);
-    font-family: FreeMono, monospace;
+    font-family: ByakurenFont, FreeMono, monospace;
     margin: 0;
     padding-top: 0;
     line-height: var(--tree-font-size);
