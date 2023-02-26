@@ -21,11 +21,12 @@
                 The art of designing a page by hand is dying by the day, with frontend frameworks removing any sense of character the internet once had.
                 <br><br>
                 My aim to back a bit of the charm that we no longer have. Inspired by many sites I've seen browsing Hacker News, I decided to finally spin up a blog of my own,
-                with two simple goals:
+                with just a few simple goals:
 
                 <ol>
                     <li>Not a <em>single</em> line of javascript.</li>
                     <li>Unique styling that suits my tastes.</li>
+                    <li>Fully self contained. No analytics, no jquery, no external font linking.</li>
                 </ol>
 
                 I don't know why, but I've always found the amber glow of some early CRTs so appealing - there's just something about the color that I find so very satisfying to look at.
