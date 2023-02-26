@@ -11,25 +11,27 @@
         <div class="home-segment retro-border">
             <h2 style="text-align:center;">Latest Posts</h2>
             {% for post in posts %}
-            <h3 style="text-align:center;"><a href="/page/{{posts[0].id}}">{{post.title}}</a></h3> <p style="text-align:center;">(posted on {{post.timestamp | date}})</p>
+            <h3 style="text-align:center;"><a href="/page/{{post.id}}">{{post.title}}</a></h3> <p style="text-align:center;">(posted on {{post.timestamp | date}})</p>
             {% endfor %}
         </div>
         <div class="home-segment retro-border" >
             <h2 style="text-align:center;">Site Philosophy</h2>
+            <!-- TODO make a class for these two p tags and probably also for text-align;center lol -->
             <p style="margin: 10px 10px;">
                 The old internet is a relic of the past. Today, blogging sites like Medium have taken over, removing one's personal touch on the world wide web.
                 The art of designing a page by hand is dying by the day, with frontend frameworks removing any sense of character the internet once had.
                 <br><br>
                 My aim to back a bit of the charm that we no longer have. Inspired by many sites I've seen browsing Hacker News, I decided to finally spin up a blog of my own,
                 with just a few simple goals:
-
-                <ol>
-                    <li>Not a <em>single</em> line of javascript.</li>
-                    <li>Unique styling that suits my tastes.</li>
-                    <li>Fully self contained. No analytics, no jquery, no external font linking.</li>
-                </ol>
-
+            </p>
+            <ol>
+                <li>Not a <em>single</em> line of javascript.</li>
+                <li>Unique styling that suits my tastes.</li>
+                <li>Fully self contained. No analytics, no jquery, no external font linking.</li>
+            </ol>
+            <p style="margin: 10px 10px;">
                 I don't know why, but I've always found the amber glow of some early CRTs so appealing - there's just something about the color that I find so very satisfying to look at.
+                So, if you were wondering about the theming - that's why. 
             </p>
         </div>
     </div>
