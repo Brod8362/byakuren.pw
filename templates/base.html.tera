@@ -6,7 +6,10 @@
 <body class="crt">
     <div class="grid-container">
         <div class="header retro-border">
-            <h1 class="site-title">byakuren.pw</h1>
+            <svg width="80px" height="80px" xmlns="http://www.w3.org/2000/svg">
+                <image xlink:href="/static/favicon.svg" width="75px" height="75px"></image>
+            </svg>
+            <h1 class="site-title"><a href="/">byakuren.pw</a></h1>
             <!-- <marquee>have you had your cereal today?</marquee> -->
         </div>
         <div class="sidebar retro-border">
@@ -21,7 +24,7 @@
 ╠ Posts
 {% for post in posts -%}
 {% set_global i = i-1 -%}
-║ {% if i == 0 %}╚{% else %}╠{%endif%}<a href="/page/{{post.id}}" class="tree">{{ post.title }}</a> <small class="date">({{ post.timestamp | date}})</small>
+║ {% if i == 0 %}╚{% else %}╠{%endif%} <a href="/page/{{post.id}}" class="tree">{{ post.title }}</a> <small class="date">({{ post.timestamp | date}})</small>
 {% endfor -%}
 ║
 ╠ <a href="https://github.com/Brod8362/byakuren.pw">Source Code</a>
