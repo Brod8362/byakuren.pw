@@ -5,6 +5,12 @@
     <div class="retro-border" style="width: 160px">
         Last Updated: {{ post.timestamp | date }}
     </div>
+    <br>
+    {% if hidden %}
+    <div class="retro-border" style="width: 160px; color: cyan;">
+        This is a hidden post. Please refrain from sharing it.
+    </div>
+    {% endif %}
     {{post.html | safe}}
 </div>
 {% endblock content %}

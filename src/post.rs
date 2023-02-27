@@ -18,8 +18,12 @@ fn parse_from_reader(lines: &mut Lines<BufReader<File>>) -> (String, i64) {
     (title_line, timestamp_line)
 }
 
-pub fn parse_min(filename: &String) -> Result<PostInfo, Status> {
-    let path = format!("pages/{}.md", filename);
+pub fn parse_min(filename: &String, hidden: bool) -> Result<PostInfo, Status> {
+    let path = if hidden {
+        format!("pages/{}.hmd", filename) 
+    } else {
+        format!("pages/{}.md", filename) 
+    };
     let fd = match File::open(path) {
         Ok(p) => p,
         Err(_) => return Err(Status::NotFound)
@@ -37,9 +41,13 @@ pub fn parse_min(filename: &String) -> Result<PostInfo, Status> {
     })
 }
 
-pub fn parse_full(filename: &String) -> Result<PostInfo, Status> {
+pub fn parse_full(filename: &String, hidden: bool) -> Result<PostInfo, Status> {
     let arena = Arena::new();
-    let path = format!("pages/{}.md", filename);
+    let path =  if hidden {
+        format!("pages/{}.hmd", filename)
+    } else {
+        format!("pages/{}.md", filename)
+    };
 
 
     let fd = match File::open(path) {
@@ -86,7 +94,7 @@ pub fn all_min() -> Vec<PostInfo> {
                         t.pop();
                         t.pop();
                         t.pop();
-                        match parse_min(&t) {
+                        match parse_min(&t, false) {
                             Ok(r) => Some(r),
                             Err(_) => None
                         }

@@ -25,6 +25,8 @@ some content
 
 **bold content**
 
+[link](https://google.com)
+
 ```
 big code block
 with multiple lines

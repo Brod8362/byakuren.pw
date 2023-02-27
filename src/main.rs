@@ -11,13 +11,26 @@ use rocket::response::content::RawXml;
 
 #[get("/page/<doc_name>")]
 fn render_doc(doc_name: String) -> Result<Template, Status> {
-    let post = post::parse_full(&doc_name)?;
+    let post = post::parse_full(&doc_name, false)?;
    
     Ok(
         Template::render("post", context! {
             title: &post.title,
             post: &post,
             posts: post::all_min(),
+        })
+    )
+}
+
+#[get("/hidden/<doc_name>")]
+fn render_hidden(doc_name: String) -> Result<Template, Status> {
+    let post = post::parse_full(&doc_name, true)?;
+    Ok(
+        Template::render("post", context! {
+            title: &post.title,
+            post: &post,
+            posts: post::all_min(),
+            hidden: true
         })
     )
 }
@@ -57,7 +70,7 @@ fn default_catcher(status: Status, _request: &Request) -> Template {
 #[launch]
 pub async fn rocket() -> Rocket<Build> {
     rocket::build()
-        .mount("/", routes![render_doc, about_page, home_page, rss_feed])
+        .mount("/", routes![render_doc, render_hidden, about_page, home_page, rss_feed])
         .mount("/static", FileServer::from("static"))
         .register("/", catchers![default_catcher])
         .attach(Template::fairing())
