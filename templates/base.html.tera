@@ -4,11 +4,16 @@
     <title>{{title}}</title>
 </head>
 <body class="crt">
-    <div class="header retro-border">
-        <h1 class="site-title">byakuren.pw</h1>
-    </div>
-    <div class="sidebar retro-border">
-<pre class="tree">
+    <div class="grid-container">
+        <div class="header retro-border">
+            <svg width="80px" height="80px" xmlns="http://www.w3.org/2000/svg">
+                <image xlink:href="/static/favicon.svg" width="75px" height="75px"></image>
+            </svg>
+            <h1 class="site-title"><a href="/">byakuren.pw</a></h1>
+            <!-- <marquee>have you had your cereal today?</marquee> -->
+        </div>
+        <div class="sidebar retro-border">
+    <pre class="tree">
 
   Site Map
 ╠══════════╝
@@ -19,18 +24,20 @@
 ╠ Posts
 {% for post in posts -%}
 {% set_global i = i-1 -%}
-║ {% if i == 0 %}╚{% else %}╠{%endif%}<a href="/page/{{post.0}}" class="tree">{{ post.0 | replace(from="_", to=" ")}}</a> <small class="date">({{ post.1 | date}})</small>
+║ {% if i == 0 %}╚{% else %}╠{%endif%} <a href="/page/{{post.id}}" class="tree">{{ post.title }}</a> <small class="date">({{ post.timestamp | date}})</small>
 {% endfor -%}
 ║
 ╠ <a href="https://github.com/Brod8362/byakuren.pw">Source Code</a>
+╠ <a href="/rss">RSS Feed</a>
 ╚ <a href="/about">About</a>
 
-</pre>
-    </div>
-    <main>
-        {% block content%}{% endblock content %}
-    </main>
-    <div class="footer retro-border">
-        <p>© 2023 Brod8362</p>
+    </pre>
+        </div>
+        <main>
+            {% block content%}{% endblock content %}
+        </main>
+        <div class="footer retro-border">
+            <p>© 2023 Brod8362</p>
+        </div>
     </div>
 </body>

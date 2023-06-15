@@ -1,5 +1,10 @@
+@font-face {
+    font-family: ByakurenFont;
+    src: url("/static/font/regular.ttf");
+}
+
 :root {
-    --sidebar-width: 280px;
+    --sidebar-width: 350px;
     --header-height: 80px;
     --theme-color: #FFBF00;
     --tree-font-size: 20px;
@@ -23,38 +28,38 @@ body {
 
 * {
     color: var(--theme-color);
-    font-family: FreeMono, monospace;
+    font-family: ByakurenFont, FreeMono, monospace;
     text-shadow: 0.4389924193300864px 0 1px rgba(0,30,255,0.5), -0.4389924193300864px 0 1px rgba(255,0,80,0.3), 0 0 3px;
 }
 
 main {
     margin-left: var(--sidebar-width);
-    height: 100vh;
     top: var(--header-height);
     padding: 15px 30px;
     align-content: center;
     border-right: double;
     margin-right: -6px;
+    grid-row: 2;
+    grid-column-start: 1;
+    grid-column-end: 3;
 }
 
 .tree {
     font-size: var(--tree-font-size);
-    font-family: FreeMono, monospace;
+    font-family: ByakurenFont, FreeMono, monospace;
     margin: 0;
     padding-top: 0;
     line-height: var(--tree-font-size);
 }
 
 .sidebar {
-    height: 103%;
     width: var(--sidebar-width);
-    position: absolute;
     z-index: 1;
     top: var(--header-height);
     left: var(--total-margin);
-    margin-top: 15px;
-    margin-bottom: -15px;
     border-bottom: none;
+    grid-row: 2;
+    grid-column: 1;
 }
 
 .header {
@@ -63,6 +68,10 @@ main {
     left: var(--total-margin);
     width: 100%;
     margin-left: 0;
+    display:flex;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row: 1;
 }
 
 .footer {
@@ -72,10 +81,10 @@ main {
     margin-right: -6px;
     background: black;
     z-index: 2;
-}
-
-.post-content {
-
+    grid-column: span;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row: 3;
 }
 
 .error-code {
@@ -96,7 +105,7 @@ main {
 .crt::before {
     content: " ";
     display: block;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     bottom: 0;
@@ -112,3 +121,14 @@ code {
     height: auto;
 }
 
+.home-section {
+    height: 100%;
+}
+
+.home-segment {
+    flex: 1;
+}
+
+.grid-container {
+    display:grid;
+}

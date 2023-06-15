@@ -3,8 +3,14 @@
 {% block content %}
 <div class="post-content">
     <div class="retro-border" style="width: 160px">
-        Last Updated: {{ created | date }}
+        Last Updated: {{ post.timestamp | date }}
     </div>
-    {{rendered_page | safe}}
+    <br>
+    {% if hidden %}
+    <div class="retro-border" style="width: 160px; color: cyan;">
+        This is a hidden post. Please refrain from sharing it.
+    </div>
+    {% endif %}
+    {{post.html | safe}}
 </div>
 {% endblock content %}
