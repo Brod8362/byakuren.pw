@@ -21,5 +21,7 @@ EXPOSE 8000
 RUN cd /
 RUN rm -rf /src
 
+ENV ROCKET_ENV=release
+
 WORKDIR /app
 ENTRYPOINT ["/app/byakuren_ssg"]
