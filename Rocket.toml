@@ -1,11 +1,11 @@
 [debug]
-address = "localhost"
+address = "127.0.0.1"
 port = 8000
 workers = 5
 log="normal"
 
-[production]
-address = "0.0.0.0"
+[release]
+address = "127.0.0.1"
 port = 8000
 workers = 5
 log="critical"
